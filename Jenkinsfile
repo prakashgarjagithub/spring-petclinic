@@ -20,7 +20,7 @@ pipeline {
                 junit testResults:'**/surefire-reports/TEST-*.xml'                 
             }
         }
-        stages('sonarcloud') {
+        stage('sonarcloud') {
             steps{
                  mvn clean verify sonar:sonar \
                 -Dsonar.login=afafbaeafe9e0838af126c5d3e1a93e08f9de8f9 \
