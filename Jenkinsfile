@@ -1,10 +1,10 @@
 pipeline {
-    agent { 'label JAVA_17'}
+    agent { label 'JAVA_17'}
     triggers { pollSCM ('* * * * *')}
     stages {
         stage('vcs') {
             steps{
-                git url: 'https://github.com/prakashgarjagithub/spring-petclinic.git'
+                git url: 'https://github.com/prakashgarjagithub/spring-petclinic.git',
                     branch: 'develop'
             }
         }
