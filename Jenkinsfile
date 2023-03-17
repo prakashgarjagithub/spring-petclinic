@@ -1,5 +1,5 @@
 pipeline {
-    agent { 'label JAVA_17'}
+    agent { label 'JAVA_17'}
     triggers { pollSCM ('* * * * *')}
     stages {
         stage('vcs') {
