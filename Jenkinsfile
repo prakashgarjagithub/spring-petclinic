@@ -22,11 +22,11 @@ pipeline {
         }
         stage('sonarcloud') {
             steps{
-                 mvn clean verify sonar:sonar \
+                sh 'mvn clean verify sonar:sonar \
                 -Dsonar.login=afafbaeafe9e0838af126c5d3e1a93e08f9de8f9 \
                 -Dsonar.host.url=https://sonarcloud.io \
                 -Dsonar.organization=prakashgarjagithub \
-                -Dsonar.projectKey=prakashgarjagithub
+                -Dsonar.projectKey=prakashgarjagithub'
             }
         }  
      }
