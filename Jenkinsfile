@@ -16,8 +16,9 @@ pipeline {
         stage('post build') {
             steps{
                 archiveArtifacts artifacts: '**/target/*.jar',
-                                 onlyIfSuccessful: true
+                onlyIfSuccessful: true
+                junit testResults:'**/surefire-reports/TEST-*.xml'                 
             }
         }   
-    }
-}    
+     }
+}
