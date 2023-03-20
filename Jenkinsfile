@@ -28,6 +28,11 @@ pipeline {
                 -Dsonar.organization=prakashgarjagithub \
                 -Dsonar.projectKey=prakashgarjagithub'
             }
-        }  
-     }
-}
+        }
+        stage('upload s3 bucket') {
+            steps{
+                sh 'aws s3 cp /home/ubuntu/remote/workspace/spc_develop/target/spring-petclinic-3.0.0-SNAPSHOT.jar s3://qt4362'
+            }
+        }        
+    }
+}    

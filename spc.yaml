@@ -1,0 +1,28 @@
+- name: wildfly on ubuntu
+  hosts: all
+  become: yes
+  tasks:
+- name: s3 bucket url download
+  ansible.builtin.get_url:
+    url: 
+    dest: /home/ubuntu  
+- name: copy the file
+  ansible.builtin.copy:
+    src: /opt/wildfly-16.0.0.Final
+    dest: /home/ubuntu
+    remote_src: true    
+- name: copy the system file
+  ansible.builtin.copy:
+    src: /opt/wildfly/docs/contrib/scripts/systemd/wildfly.service
+    dest: /etc/systemd/system/
+    remote_src: true    
+- name: reload the daemon
+  ansible.builtin.systemd:
+    state: restarted
+    daemon_reload: yes
+    name: wildfly 
+- name: start the service
+  ansible.builtin.systemd:
+    state: started
+    name: wildfly
+    enabled: yes       
